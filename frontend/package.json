@@ -6,14 +6,30 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run --config vitest.config.js",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test --config playwright.config.js",
+    "test:e2e:ui": "playwright test --config playwright.config.js --ui"
+  },
+  "overrides": {
+    "js-beautify": {
+      "glob": "14.0.2"
+    },
+    "editorconfig": {
+      "minimatch": "11.0.1"
+    }
   },
   "dependencies": {
     "vue": "^3.5.44",
     "vue-router": "^4.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@vitejs/plugin-vue": "^6.0.10",
-    "vite": "^8.3.6"
+    "@vue/test-utils": "2.4.11",
+    "jsdom": "^29.1.1",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.2"
   }
 }

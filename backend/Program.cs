@@ -17,3 +17,6 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 
 app.Run();
+
+// Integrationstests zugänglich machen
+public partial class Program { }
