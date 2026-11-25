@@ -1,0 +1,303 @@
+&#x20;# ⛸️ Schlittschuhverleih
+
+
+
+Eine Full-Stack-Webanwendung (SPA) zur digitalen Verwaltung eines
+
+Schlittschuhverleihs, entwickelt mit \*\*Vue 3\*\*, \*\*JavaScript\*\*, \*\*Vite\*\*,
+
+\*\*C# / ASP.NET Core\*\*, \*\*Entity Framework Core\*\* und \*\*SQLite\*\*.
+
+
+
+Die Anwendung bildet zentrale Prozesse eines Schlittschuhverleihs ab,
+
+darunter die Bestands- und Lagerverwaltung sowie die Ausleihe und Rückgabe
+
+von Schlittschuhen.
+
+
+
+Das Projekt entsteht im Rahmen des Studienkurses
+
+\*\*DLBSEPPSD01\_D – Software Development\*\* und demonstriert moderne
+
+Full-Stack-Entwicklung, domänenorientierte Konzepte und eine klare
+
+Trennung der Verantwortlichkeiten.
+
+
+
+\## 🚀 Geplanter Funktionsumfang
+
+
+
+\### Schlittschuhverwaltung
+
+
+
+\- Erfassung und Anzeige von Schlittschuhbeständen
+
+\- Änderung von Bestandsmengen
+
+\- Wechsel von Lagerorten
+
+\- Löschen von Bestandseinträgen
+
+\- Validierung fachlicher Geschäftsregeln
+
+
+
+\### Ausleihe und Rückgabe
+
+
+
+\- Ausleihe verfügbarer Schlittschuhe
+
+\- Generierung eindeutiger Rückgabecodes
+
+\- Anzeige aktiver Ausleihen
+
+\- Rückgabe anhand eines Rückgabecodes
+
+\- Automatische Aktualisierung der verfügbaren Bestände
+
+
+
+\### Lagerverwaltung
+
+
+
+\- Anzeige vorhandener Lagerorte
+
+\- Verwaltung der Lagerkapazitäten
+
+
+
+\## 🛠️ Technologie-Stack
+
+
+
+\### Backend
+
+
+
+\- C#
+
+\- .NET 10
+
+\- ASP.NET Core
+
+\- Entity Framework Core
+
+\- SQLite
+
+\- REST API + OpenAPI
+
+
+
+\### Frontend
+
+
+
+\- Vue 3
+
+\- JavaScript
+
+\- Vite
+
+\- Vue Router
+
+\- Fetch API
+
+
+
+\## 🏗️ Architektur
+
+
+
+Schlittschuhverleih wird als modularer Monolith mit einer
+
+schichtenorientierten Architektur entwickelt, die sich an den
+
+Prinzipien der Clean Architecture orientiert.
+
+
+
+```
+
+Vue 3 Frontend
+
+&#x20;   ↓
+
+ASP.NET Core API (Controllers)
+
+&#x20;   ↓
+
+Application Layer (Services, DTOs, Interfaces)
+
+&#x20;   ↓
+
+Domain Layer (Entities, Business Rules)
+
+
+
+Infrastructure Layer (Repositories, EF Core,
+
+&#x20;                     DbContext, Migrations)
+
+&#x20;   ↓
+
+SQLite Database
+
+```
+
+
+
+\## 📁 Projektstruktur
+
+
+
+TBA
+
+
+
+\## 🧪 Tests
+
+
+
+TBA
+
+
+
+\## 🚀 Installation
+
+
+
+\### Voraussetzungen
+
+
+
+\- .NET 10 SDK
+
+\- Node.js + npm
+
+\- Git
+
+
+
+\### Repository klonen
+
+
+
+```bash
+
+git clone https://github.com/alyna1411/Schlittschuhverleih.git
+
+cd Schlittschuhverleih
+
+```
+
+
+
+\### Backend starten
+
+
+
+```bash
+
+cd backend
+
+dotnet run
+
+```
+
+
+
+\### Frontend starten
+
+
+
+```bash
+
+cd frontend
+
+npm install
+
+npm run dev
+
+```
+
+
+
+Frontend und Backend laufen unter:
+
+```bash
+Backend: http://localhost:5124
+Frontend: http://localhost:5173
+```
+
+
+
+\## 📸 Screenshots
+
+
+
+TBA
+
+
+
+\## 🗺️ Zukünftige Erweiterungen
+
+
+
+TBA
+
+
+
+\## 🎯 Projektziele
+
+
+
+\- Praxisorientierte Entwicklung mit C# und .NET
+
+\- Konzeption und Implementierung einer REST API
+
+\- Datenmodellierung mit Entity Framework Core
+
+\- Anwendung domänenorientierter Konzepte
+
+\- Frontend-Entwicklung mit Vue 3 und JavaScript
+
+\- Full-Stack-Integration
+
+\- Separation of Concerns
+
+\- Dependency Inversion
+
+\- Clean-Architecture-Prinzipien
+
+\- Automatisierte Qualitätssicherung
+
+
+
+\## 📋 Entwicklungsprozess
+
+
+
+Die Entwicklung erfolgt agil nach Kanban in aufeinander aufbauenden,
+
+funktionsfähigen Inkrementen.
+
+
+
+\## 🚧 Projektstatus
+
+
+
+Das Projekt befindet sich in der Entwicklung.
+
+Diese Dokumentation wird kontinuierlich erweitert.
+
+
+

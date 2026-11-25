@@ -1,0 +1,43 @@
+# .NET: Build-Dateien
+**/bin/
+**/obj/
+**/TestResults/
+
+# SQLite: Lokale Datenbanken und Sicherungen
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/*.db-journal
+**/*.sqlite
+**/*.sqlite3
+
+# Frontend: Abhängigkeiten und Build-Ausgaben
+**/node_modules/
+**/dist/
+**/.vite/
+**/.vitest-cache/
+**/coverage/
+
+# Playwright: Testergebnisse
+**/test-results/
+**/playwright-report/
+
+# Entwicklungsumgebungen
+**/.vs/
+**/.vscode/
+.idea/
+*.user
+*.suo
+
+# Lokale Umgebungsdateien
+**/.env
+**/.env.*
+!**/.env.example
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Temporäre Dateien
+*.tmp
+*.log
