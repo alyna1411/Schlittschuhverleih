@@ -1,3 +1,8 @@
+<script setup>
+// Root-Komponente rendert das Hauptlayout
+import AppLayout from './layouts/AppLayout.vue'
+</script>
+
 <template>
-  <h1>Schlittschuhverleih</h1>
+  <AppLayout />
 </template>

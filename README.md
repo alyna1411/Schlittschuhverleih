@@ -1,12 +1,12 @@
-&#x20;# ⛸️ Schlittschuhverleih
+# ⛸️ Schlittschuhverleih
 
 
 
 Eine Full-Stack-Webanwendung (SPA) zur digitalen Verwaltung eines
 
-Schlittschuhverleihs, entwickelt mit \*\*Vue 3\*\*, \*\*JavaScript\*\*, \*\*Vite\*\*,
+Schlittschuhverleihs, entwickelt mit **Vue 3**, **JavaScript**, **Vite**,
 
-\*\*C# / ASP.NET Core\*\*, \*\*Entity Framework Core\*\* und \*\*SQLite\*\*.
+**C# / ASP.NET Core**, **Entity Framework Core** und **SQLite**.
 
 
 
@@ -18,9 +18,7 @@ von Schlittschuhen.
 
 
 
-Das Projekt entsteht im Rahmen des Studienkurses
-
-\*\*DLBSEPPSD01\_D – Software Development\*\* und demonstriert moderne
+Schlittschuhverleih demonstriert moderne
 
 Full-Stack-Entwicklung, domänenorientierte Konzepte und eine klare
 
@@ -28,91 +26,91 @@ Trennung der Verantwortlichkeiten.
 
 
 
-\## 🚀 Geplanter Funktionsumfang
+## 🚀 Funktionen
 
 
 
-\### Schlittschuhverwaltung
+### Schlittschuhverwaltung
 
 
 
-\- Erfassung und Anzeige von Schlittschuhbeständen
+- Erfassung und Anzeige von Schlittschuhbeständen
 
-\- Änderung von Bestandsmengen
+- Änderung von Bestandsmengen
 
-\- Wechsel von Lagerorten
+- Wechsel von Lagerorten
 
-\- Löschen von Bestandseinträgen
+- Löschen von Bestandseinträgen
 
-\- Validierung fachlicher Geschäftsregeln
-
-
-
-\### Ausleihe und Rückgabe
+- Validierung fachlicher Geschäftsregeln
 
 
 
-\- Ausleihe verfügbarer Schlittschuhe
-
-\- Generierung eindeutiger Rückgabecodes
-
-\- Anzeige aktiver Ausleihen
-
-\- Rückgabe anhand eines Rückgabecodes
-
-\- Automatische Aktualisierung der verfügbaren Bestände
+### Ausleihe und Rückgabe
 
 
 
-\### Lagerverwaltung
+- Ausleihe verfügbarer Schlittschuhe
+
+- Generierung eindeutiger Rückgabecodes
+
+- Anzeige aktiver Ausleihen
+
+- Rückgabe anhand eines Rückgabecodes
+
+- Automatische Aktualisierung der verfügbaren Bestände
 
 
 
-\- Anzeige vorhandener Lagerorte
-
-\- Verwaltung der Lagerkapazitäten
+### Lagerverwaltung
 
 
 
-\## 🛠️ Technologie-Stack
+- Anzeige vorhandener Lagerorte
+
+- Verwaltung der Lagerkapazitäten
 
 
 
-\### Backend
+## 🛠️ Technologie-Stack
 
 
 
-\- C#
-
-\- .NET 10
-
-\- ASP.NET Core
-
-\- Entity Framework Core
-
-\- SQLite
-
-\- REST API + OpenAPI
+### Backend
 
 
 
-\### Frontend
+- C#
+
+- .NET 10
+
+- ASP.NET Core
+
+- Entity Framework Core
+
+- SQLite
+
+- REST API + OpenAPI
 
 
 
-\- Vue 3
-
-\- JavaScript
-
-\- Vite
-
-\- Vue Router
-
-\- Fetch API
+### Frontend
 
 
 
-\## 🏗️ Architektur
+- Vue 3
+
+- JavaScript
+
+- Vite
+
+- Vue Router
+
+- Fetch API
+
+
+
+## 🏗️ Architektur
 
 
 
@@ -124,37 +122,86 @@ Prinzipien der Clean Architecture orientiert.
 
 
 
-```
-
+```bash
 Vue 3 Frontend
-
-&#x20;   ↓
-
+    ↓
 ASP.NET Core API (Controllers)
-
-&#x20;   ↓
-
+    ↓
 Application Layer (Services, DTOs, Interfaces)
-
-&#x20;   ↓
-
-Domain Layer (Entities, Business Rules)
-
-
-
-Infrastructure Layer (Repositories, EF Core,
-
-&#x20;                     DbContext, Migrations)
-
-&#x20;   ↓
-
+    ↓
+Domain Layer (Entities, Rules)
+    ↓
+Infrastructure Layer (EF Core, DbContext, Migrations)
+    ↓
 SQLite Database
-
 ```
 
 
 
-\## 📁 Projektstruktur
+## 📁 Projektstruktur
+
+
+
+```bash
+Schlittschuhverleih/
+├── .gitignore
+├── README.md
+│
+├── backend/
+│   ├── Application/
+│   │   ├── DTOs/
+│   │   │   ├── Rentals/
+│   │   │   ├── Skates/
+│   │   │   └── Storage/
+│   │   ├── Interfaces/
+│   │   └── Services/
+│   ├── Controllers/
+│   ├── Domain/
+│   │   ├── Entities/
+│   │   └── Rules/
+│   ├── Infrastructure/
+│   │   ├── Api/
+│   │   ├── Persistence/
+│   │   │   ├── Configurations/
+│   │   │   └── Seed/
+│   │   └── Repositories/
+│   ├── Properties/
+│   │   └── launchSettings.json
+│   ├── appsettings.json
+│   ├── appsettings.Development.json
+│   ├── backend.csproj
+│   └── Program.cs
+│
+└── frontend/
+    ├── src/
+    │   ├── assets/
+    │   │   └── skates/
+    │   ├── components/
+    │   │   └── ui/
+    │   ├── composables/
+    │   ├── features/
+    │   │   ├── rentals/
+    │   │   ├── skates/
+    │   │   └── storage/
+    │   ├── layouts/
+    │   │   └── AppLayout.vue
+    │   ├── router/
+    │   │   └── index.js
+    │   ├── services/
+    │   ├── views/
+    │   │   └── DashboardView.vue
+    │   ├── App.vue
+    │   ├── main.js
+    │   └── style.css
+    ├── index.html
+    ├── package.json
+    ├── package-lock.json
+    └── vite.config.js
+```
+
+
+
+## 🧪 Tests
 
 
 
@@ -162,31 +209,23 @@ TBA
 
 
 
-\## 🧪 Tests
+## 🚀 Installation
 
 
 
-TBA
+### Voraussetzungen
 
 
 
-\## 🚀 Installation
+- .NET 10 SDK
+
+- Node.js + npm
+
+- Git
 
 
 
-\### Voraussetzungen
-
-
-
-\- .NET 10 SDK
-
-\- Node.js + npm
-
-\- Git
-
-
-
-\### Repository klonen
+### Repository klonen
 
 
 
@@ -200,7 +239,7 @@ cd Schlittschuhverleih
 
 
 
-\### Backend starten
+### Backend starten
 
 
 
@@ -214,7 +253,7 @@ dotnet run
 
 
 
-\### Frontend starten
+### Frontend starten
 
 
 
@@ -230,7 +269,7 @@ npm run dev
 
 
 
-Frontend und Backend laufen unter:
+### Frontend und Backend laufen unter:
 
 ```bash
 Backend: http://localhost:5124
@@ -239,7 +278,7 @@ Frontend: http://localhost:5173
 
 
 
-\## 📸 Screenshots
+## 📸 Screenshots
 
 
 
@@ -247,7 +286,7 @@ TBA
 
 
 
-\## 🗺️ Zukünftige Erweiterungen
+## 🗺️ Zukünftige Erweiterungen
 
 
 
@@ -255,33 +294,33 @@ TBA
 
 
 
-\## 🎯 Projektziele
+## 🎯 Projektziele
 
 
 
-\- Praxisorientierte Entwicklung mit C# und .NET
+- Praxisorientierte Entwicklung mit C# und .NET
 
-\- Konzeption und Implementierung einer REST API
+- Konzeption und Implementierung einer REST API
 
-\- Datenmodellierung mit Entity Framework Core
+- Datenmodellierung mit Entity Framework Core
 
-\- Anwendung domänenorientierter Konzepte
+- Anwendung domänenorientierter Konzepte
 
-\- Frontend-Entwicklung mit Vue 3 und JavaScript
+- Frontend-Entwicklung mit Vue 3 und JavaScript
 
-\- Full-Stack-Integration
+- Full-Stack-Integration
 
-\- Separation of Concerns
+- Separation of Concerns
 
-\- Dependency Inversion
+- Dependency Inversion
 
-\- Clean-Architecture-Prinzipien
+- Clean-Architecture-Prinzipien
 
-\- Automatisierte Qualitätssicherung
+- Automatisierte Qualitätssicherung
 
 
 
-\## 📋 Entwicklungsprozess
+## 📋 Entwicklungsprozess
 
 
 
@@ -291,7 +330,7 @@ funktionsfähigen Inkrementen.
 
 
 
-\## 🚧 Projektstatus
+## 🚧 Projektstatus
 
 
 
