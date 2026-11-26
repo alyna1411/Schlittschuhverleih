@@ -105,7 +105,9 @@ Schlittschuhverleih/
 │   │   ├── Api/
 │   │   ├── Persistence/
 │   │   │   ├── Configurations/
-│   │   │   └── Seed/
+│   │   │   ├── Migrations/
+│   │   │   ├── Seed/
+│   │   │   └── SkateDbContext.cs
 │   │   └── Repositories/
 │   ├── Properties/
 │   │   └── launchSettings.json
@@ -158,7 +160,6 @@ Schlittschuhverleih/
             │   └── DashboardView.test.js
             └── services/
 ```
-
 
 ## 🧪 Tests
 
@@ -216,7 +217,6 @@ cd Schlittschuhverleih
 ```
 
 
-
 ### Backend starten
 
 ```bash
@@ -227,9 +227,7 @@ dotnet run
 
 ```
 
-
 ### Frontend starten
-
 
 ```bash
 

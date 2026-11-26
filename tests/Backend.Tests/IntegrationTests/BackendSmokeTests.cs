@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using Xunit;
+using backend.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Backend.Tests.IntegrationTests;
 
@@ -18,5 +21,24 @@ public class BackendSmokeTests
 
         // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Database_IsReachableAndMigrated()
+    {
+        // Arrange
+        using var factory = new WebApplicationFactory<Program>();
+        using var scope = factory.Services.CreateScope();
+
+        var db = scope.ServiceProvider
+            .GetRequiredService<SkateDbContext>();
+
+        // Act
+        var canConnect = await db.Database.CanConnectAsync();
+        var pendingMigrations = await db.Database.GetPendingMigrationsAsync();
+
+        // Assert
+        Assert.True(canConnect);
+        Assert.Empty(pendingMigrations);
     }
 }
