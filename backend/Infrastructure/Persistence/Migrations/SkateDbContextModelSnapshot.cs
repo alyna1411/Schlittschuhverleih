@@ -15,6 +15,32 @@ namespace backend.Infrastructure.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
+
+            modelBuilder.Entity("backend.Domain.Entities.StorageLocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MaxCapacity")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(10);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.ToTable("StorageLocations", t =>
+                        {
+                            t.HasCheckConstraint("CK_StorageLocations_MaxCapacity", "\"MaxCapacity\" >= 1");
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

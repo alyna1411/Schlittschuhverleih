@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using Xunit;
 using backend.Infrastructure.Persistence;
@@ -13,7 +12,7 @@ public class BackendSmokeTests
     public async Task OpenApiEndpoint_ReturnsOk()
     {
         // Arrange
-        using var factory = new WebApplicationFactory<Program>();
+        using var factory = new TestWebApplicationFactory();
         using var client = factory.CreateClient();
 
         // Act
@@ -27,7 +26,7 @@ public class BackendSmokeTests
     public async Task Database_IsReachableAndMigrated()
     {
         // Arrange
-        using var factory = new WebApplicationFactory<Program>();
+        using var factory = new TestWebApplicationFactory();
         using var scope = factory.Services.CreateScope();
 
         var db = scope.ServiceProvider
@@ -40,5 +39,10 @@ public class BackendSmokeTests
         // Assert
         Assert.True(canConnect);
         Assert.Empty(pendingMigrations);
+
+        Assert.StartsWith(
+            "skates-test-",
+            Path.GetFileName(db.Database.GetDbConnection().DataSource)
+        );
     }
 }

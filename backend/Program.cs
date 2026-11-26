@@ -1,5 +1,9 @@
 using backend.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using backend.Application.Services;
+using backend.Infrastructure.Persistence.Seed;
+using backend.Application.Interfaces;
+using backend.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +25,10 @@ builder.Services.AddDbContext<SkateDbContext>(options =>
     options.UseSqlite($"Data Source={databasePath}")
 );
 
+// Services und Repositories registrieren
+builder.Services.AddScoped<StorageService>();
+builder.Services.AddScoped<IStorageRepository, StorageRepository>();
+
 // Controllers für REST-API registrieren
 builder.Services.AddControllers();
 
@@ -36,6 +44,9 @@ using (var scope = app.Services.CreateScope())
         .GetRequiredService<SkateDbContext>();
 
     await db.Database.MigrateAsync();
+
+    // Lagerorte initialisieren
+    await StorageLocationSeeder.SeedAsync(db);
 }
 
 // OpenAPI in der Entwicklungsumgebung aktivieren
