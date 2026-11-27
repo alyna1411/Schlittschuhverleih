@@ -1,12 +1,10 @@
 # ⛸️ Schlittschuhverleih
 
-Eine Full-Stack-Webanwendung (SPA) zur digitalen Verwaltung eines Schlittschuhverleihs, entwickelt mit 
+Eine Full-Stack-Webanwendung (SPA) zur digitalen Verwaltung eines Schlittschuhverleihs, entwickelt mit
 **Vue 3**, **JavaScript**, **Vite**, **C# / ASP.NET Core**, **Entity Framework Core** und **SQLite**.
 
-
-Die Anwendung bildet zentrale Prozesse eines Schlittschuhverleihs ab, darunter die Bestands- und 
-Lagerverwaltung sowie die Ausleihe und Rückgabe von Schlittschuhen.
-
+Die Anwendung wird inkrementell entwickelt und soll zentrale Prozesse eines Schlittschuhverleihs abbilden,
+darunter die Bestands- und Lagerverwaltung sowie die Ausleihe und Rückgabe von Schlittschuhen.
 
 Schlittschuhverleih demonstriert moderne Full-Stack-Entwicklung, domänenorientierte Konzepte und eine klare
 Trennung der Verantwortlichkeiten.
@@ -15,7 +13,7 @@ Trennung der Verantwortlichkeiten.
 ## 🚀 Funktionen
 
 
-### Schlittschuhverwaltung
+### Schlittschuhverwaltung (geplant)
 
 - Erfassung und Anzeige von Schlittschuhbeständen
 - Änderung von Bestandsmengen
@@ -24,7 +22,7 @@ Trennung der Verantwortlichkeiten.
 - Validierung fachlicher Geschäftsregeln
 
 
-### Ausleihe und Rückgabe
+### Ausleihe und Rückgabe (geplant)
 
 - Ausleihe verfügbarer Schlittschuhe
 - Generierung eindeutiger Rückgabecodes
@@ -33,7 +31,7 @@ Trennung der Verantwortlichkeiten.
 - Automatische Aktualisierung der verfügbaren Bestände
 
 
-### Lagerverwaltung
+### Lagerverwaltung (implementiert)
 
 - Anzeige vorhandener Lagerorte
 - Verwaltung der Lagerkapazitäten
@@ -81,6 +79,8 @@ Infrastructure Layer (EF Core, DbContext, Migrations)
 SQLite Database
 ```
 
+Die Abhängigkeiten zwischen den Schichten werden mittels Dependency Injection (DI) aufgelöst.
+
 
 ## 📁 Projektstruktur
 
@@ -95,20 +95,29 @@ Schlittschuhverleih/
 │   │   │   ├── Rentals/
 │   │   │   ├── Skates/
 │   │   │   └── Storage/
+│   │   │       └── StorageLocationResponseDto.cs
 │   │   ├── Interfaces/
+│   │   │   └── IStorageRepository.cs
 │   │   └── Services/
+│   │       └── StorageService.cs
 │   ├── Controllers/
+│   │   └── StorageController.cs
 │   ├── Domain/
 │   │   ├── Entities/
+│   │   │   └── StorageLocation.cs
 │   │   └── Rules/
+│   │       └── StorageRules.cs
 │   ├── Infrastructure/
 │   │   ├── Api/
 │   │   ├── Persistence/
 │   │   │   ├── Configurations/
+│   │   │   │   └── StorageLocationConfiguration.cs
 │   │   │   ├── Migrations/
 │   │   │   ├── Seed/
+│   │   │   │   └── StorageLocationSeeder.cs
 │   │   │   └── SkateDbContext.cs
 │   │   └── Repositories/
+│   │       └── StorageRepository.cs
 │   ├── Properties/
 │   │   └── launchSettings.json
 │   ├── appsettings.json
@@ -122,18 +131,25 @@ Schlittschuhverleih/
 │   │   │   └── skates/
 │   │   ├── components/
 │   │   │   └── ui/
+│   │   │       └── ToastNotification.vue
 │   │   ├── composables/
+│   │   │   └── useRentalSystem.js
 │   │   ├── features/
 │   │   │   ├── rentals/
 │   │   │   ├── skates/
 │   │   │   └── storage/
+│   │   │       └── StorageOverview.vue
 │   │   ├── layouts/
-│   │   │   └── AppLayout.vue
+│   │   │   ├── AppLayout.vue
+│   │   │   └── AppNavbar.vue
 │   │   ├── router/
 │   │   │   └── index.js
 │   │   ├── services/
+│   │   │   ├── httpClient.js
+│   │   │   └── storageApi.js
 │   │   ├── views/
-│   │   │   └── DashboardView.vue
+│   │   │   ├── DashboardView.vue
+│   │   │   └── StorageView.vue
 │   │   ├── App.vue
 │   │   ├── main.js
 │   │   └── style.css
@@ -148,16 +164,14 @@ Schlittschuhverleih/
     ├── Backend.Tests/
     │   ├── Backend.Tests.csproj
     │   ├── IntegrationTests/
-    │   │   └── BackendSmokeTests.cs
     │   └── UnitTests/
     │
     └── Frontend.Tests/
         ├── End2EndTests/
-        │   └── smoke.spec.js
         ├── IntegrationTests/
         └── UnitTests/
             ├── components/
-            │   └── DashboardView.test.js
+            ├── composables/
             └── services/
 ```
 

@@ -1,4 +1,546 @@
+/* Manrope-Schriftart */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* =========================================
+   1. GRUNDEINSTELLUNGEN
+========================================= */
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172b46;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  min-width: 320px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+/* =========================================
+   2. HAUPTLAYOUT
+========================================= */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =========================================
+   3. NAVBAR
+========================================= */
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 28px 12px;
+  background: #193653;
+  color: white;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  font-size: 30px;
+  line-height: 1;
+  color: #a5d8ff;
+}
+
+.brand-text {
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+
+  color: #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background: #294b6d;
+}
+
+.nav-link.active {
+  background: #3b8ac8;
+  color: white;
+  font-weight: 700;
+}
+
+/* Regalübersicht rechts mit Abstand zu den anderen Links */
+.nav-link--storage {
+  margin-left: auto;
+}
+
+/* =========================================
+   4. HAUPTINHALT
+========================================= */
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin-bottom: 6px;
+  font-size: 30px;
+  color: #14243a;
+}
+
+.page-header p {
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* =========================================
+   5. KENNZAHLEN UND INHALTSKARTEN
+========================================= */
+
+/* Gemeinsames Erscheinungsbild */
+.panel {
+  background: white;
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 14px 18px;
+  background: #edf0f4;
+  border-bottom: 1px solid #d9dee7;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #172b46;
+}
+
+.panel-body {
+  flex: 1;
+  min-width: 0;
+  padding: 18px;
+}
+
+/* =========================================
+   ERGÄNZUNGEN: SEITENÜBERSICHTEN
+========================================= */
+
+/* Zusammengefasste Kapazitäten der Regale A, B und C. */
+.storage-capacity-panel {
+  margin-bottom: 22px;
+}
+
+.shelf-capacity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.shelf-capacity-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.shelf-capacity-item small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* =========================================
+   12. TOAST-BENACHRICHTIGUNGEN
+========================================= */
+
+/* Benachrichtigung oben rechts fixieren */
+.toast-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  padding: 16px;
+
+  background: #ffffff;
+  border: 1px solid #d9dee7;
+  border-left: 4px solid #d9dee7;
+  border-radius: 9px;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+
+  animation: toast-slide-in 0.25s ease-out;
+}
+
+/* Fehler */
+.toast-error {
+  border-left-color: #dc2626;
+}
+
+.toast-error .toast-icon {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Statussymbol */
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Überschrift und Nachricht */
+.toast-content {
+  flex: 1;
+  min-width: 0;
+  white-space: pre-line;
+}
+
+.toast-content strong {
+  display: block;
+  margin-bottom: 5px;
+
+  font-size: 14px;
+  color: #172b46;
+}
+
+.toast-content p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+
+  overflow-wrap: anywhere;
+}
+
+/* Schließen-Button */
+.toast-close {
+  flex-shrink: 0;
+
+  padding: 0 4px;
+  background: transparent;
+  border: none;
+
+  color: #64748b;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.toast-close:hover {
+  color: #172b46;
+}
+
+/* Sanftes Einblenden */
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   15. REGALÜBERSICHT
+========================================= */
+
+.storage-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Navigation zwischen den Regalen A, B und C */
+.storage-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.storage-tabs button {
+  padding: 11px 12px;
+  border: 1px solid #d8e1ed;
+  border-radius: 9px;
+  background: #f5f8fc;
+  color: #34455c;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.storage-tabs button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* Kapazitätsübersicht und Regalfachüberschriften */
+.storage-summary,
+.storage-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.storage-summary span,
+.storage-free {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Neun Regalfächer in einem 3x3-Raster darstellen */
+.storage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.storage-slot {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #dbe3ed;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.storage-count {
+  margin: 12px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Fortschrittsbalken für die Regalfachbelegung */
+.storage-progress {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e8edf3;
+  margin-bottom: 9px;
+}
+
+/* Gelb: teilweise belegtes Regalfach */
+.storage-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #e0a53c;
+  transition: width 0.2s;
+}
+
+/* Grün: leeres Regalfach */
+.storage-slot--empty {
+  border-color: #a7d9bc;
+}
+
+.storage-slot--empty .storage-progress-fill,
+.storage-slot--empty .storage-indicator {
+  background: #22a06b;
+}
+
+/* Rot: vollständig belegtes Regalfach */
+.storage-slot--full {
+  border-color: #e5aaa9;
+}
+
+.storage-slot--full .storage-progress-fill,
+.storage-slot--full .storage-indicator {
+  background: #dc5555;
+}
+
+/* Farbiger Statusindikator eines Regalfachs */
+.storage-indicator {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e0a53c;
+}
+
+/* =========================================
+   16. RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1250px) {
+  .main-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .navbar-nav {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .nav-link--storage {
+    margin-left: 0;
+  }
+
+  .brand-icon {
+    font-size: 26px;
+  }
+
+  .brand-text {
+    font-size: 16px;
+    letter-spacing: 1.2px;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  /* Regalkapazitäten untereinander darstellen */
+  .shelf-capacity-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Toast-Benachrichtigungen */
+@media (max-width: 700px) {
+  .toast-notification {
+    top: 12px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    max-width: none;
+  }
+}
+
+/* Animation bei reduzierter Bewegung deaktivieren */
+@media (prefers-reduced-motion: reduce) {
+  .toast-notification {
+    animation: none;
+  }
+}
+
+/* Regalübersicht */
+@media (max-width: 600px) {
+  .storage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .storage-slot {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-text {
+    font-size: 14px;
+    letter-spacing: 0.8px;
+  }
+
+  .storage-grid {
+    grid-template-columns: 1fr;
+  }
 }
